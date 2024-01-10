@@ -1,0 +1,22 @@
+# MEMBUAT INDEX
+##  create index customers
+PUT http://localhost:9200/customers
+
+## create index products
+PUT http://localhost:9200/products
+
+## create index orders
+PUT http://localhost:9200/orders
+
+## mendapatkan semua index
+GET http://localhost:9200/_cat/indices?v
+
+health status index     uuid                   pri rep docs.count docs.deleted store.size pri.store.size dataset.size
+yellow open   orders    BwddK_usSNaTan3aUHJrDw   1   1          0            0       227b           227b         227b
+yellow open   customers K8qKbh8xSoueZk_OoElXUA   1   1          0            0       227b           227b         227b
+yellow open   products  osf3adsIQ2qEy4xy2JfaQA   1   1          0            0       227b           227b         227b
+
+# ===============================
+
+# MENGHAPUS INDEX
+DELETE http://localhost:9200/customers
