@@ -1,0 +1,68 @@
+### create new customer
+
+POST http://localhost:9200/customers/_create/gian
+Content-Type: application/json
+
+{
+  "name": "Gian Nurwana",
+  "register_at": "2024-01-01 00:00:00"
+}
+
+### get customers mapping
+GET http://localhost:9200/customers/_mapping
+
+### create customers fail (karena tanggal salah)
+
+POST http://localhost:9200/customers/_create/gian
+Content-Type: application/json
+
+{
+  "name": "Gian Nurwana",
+  "register_at": "salah"
+}
+
+### insert products
+POST http://localhost:9200/products/_create/1
+Content-Type: application/json
+
+{
+  "name": "Indomie Ayam Bawang",
+  "price": "2000"
+}
+
+### insert products
+POST http://localhost:9200/products/_create/2
+Content-Type: application/json
+
+{
+  "name": "Mie Sedap Soto",
+  "price": 2500
+}
+
+### get products mapping
+GET http://localhost:9200/products/_mapping
+
+### get order mapping
+GET http://localhost:9200/orders/_mapping
+
+### insert orders
+
+POST http://localhost:9200/orders/_create/1
+Content-Type: application/json
+
+{
+  "order_date": "2023-01-01 00:00:00",
+  "customer_id": "gian",
+  "items": [
+    {
+      "product_id": "1",
+      "price": "2000",
+      "qty": "2"
+    },
+    {
+      "product_id": "2",
+      "price": "2500",
+      "qty": "2"
+    }
+  ]
+}
