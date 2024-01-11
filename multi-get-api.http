@@ -1,0 +1,31 @@
+### MENDAPATKAN DATA SECARA SEKALIGUS
+### get product 1 dan 2
+GET http://localhost:9200/products/_mget
+Content-Type: application/json
+
+{
+  "ids": [
+    "1", "2"
+  ]
+}
+
+### get order 1 dan customer gian
+GET http://localhost:9200/_mget
+Content-Type: application/json
+
+{
+  "docs": [
+    {
+      "_id": 1,
+      "_index": "orders"
+    },
+    {
+      "_id": "gian",
+      "_index": "customers"
+    },
+    {
+      "_id": "3",
+      "_index": "products"
+    }
+  ]
+}
