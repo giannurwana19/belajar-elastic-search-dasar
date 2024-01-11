@@ -1,0 +1,17 @@
+### get customers gian
+GET http://localhost:9200/customers/_doc/gian
+
+### get customer 404
+GET http://localhost:9200/customers/_doc/salah
+
+### mengambil langsung source nya dengan _source
+GET http://localhost:9200/customers/_source/gian
+
+### mengambil langsung source 404
+GET http://localhost:9200/customers/_source/4040
+
+### check exist (apakah dokumen ada di index atau tidak)
+HEAD http://localhost:9200/customers/_doc/gian
+
+### check exist (404)
+HEAD http://localhost:9200/customers/_doc/salah
