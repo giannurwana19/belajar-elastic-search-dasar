@@ -1,6 +1,6 @@
 ### MENDAPATKAN DATA SECARA SEKALIGUS
 ### get product 1 dan 2
-GET http://localhost:9200/products/_mget
+POST http://localhost:9200/products/_mget
 Content-Type: application/json
 
 {
