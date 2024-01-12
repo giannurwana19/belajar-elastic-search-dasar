@@ -1,0 +1,21 @@
+# Bulk API
+# ● Saat melakukan operasi yang sangat banyak ke Elasticsearch, ada baiknya kita menggunakan Bulk
+# API untuk mempercepat proses, dibandingkan dilakukan satu per satu secara manual
+# ● Elasticsearch menyediakan Bulk API yang bisa digunakan menggabungkan banyak operasi
+# sekaligus, create, index, update atau delete
+# ● Untuk menggunakan Bulk API, kita bisa menggunakan RESTful API :
+# POST /_bulk
+# POST /<index_name>/_bulk
+
+
+POST http://localhost:9200/_bulk
+Content-Type: application/json
+
+< bulk.json
+
+
+### 
+GET http://localhost:9200/customers/_search
+
+###
+DELETE http://localhost:9200/customers/_doc/budi
