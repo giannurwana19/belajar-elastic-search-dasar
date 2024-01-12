@@ -40,3 +40,9 @@ Content-Type: application/json
     "price": 30000000
   }
 }
+
+###
+POST http://localhost:9200/products/_search
+
+###
+DELETE http://localhost:9200/products/_doc/MS2g_YwBJTlb9W4kabgQ

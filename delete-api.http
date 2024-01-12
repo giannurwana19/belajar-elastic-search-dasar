@@ -1,0 +1,11 @@
+### insert customer spammer
+POST http://localhost:9200/customers/_create/spammer
+Content-Type: application/json
+
+{
+  "name": "spammer",
+  "register_at": "2024-01-01 00:00:00"
+}
+
+### DELETE customer spammer
+DELETE http://localhost:9200/customers/_doc/spammer
