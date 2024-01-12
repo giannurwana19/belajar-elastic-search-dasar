@@ -1,0 +1,14 @@
+### search all products
+POST http://localhost:9200/products/_search
+
+### search all products page 1
+POST http://localhost:9200/products/_search?size=1&from=0
+
+### search all products page 2
+POST http://localhost:9200/products/_search?size=1&from=1
+
+### search ll product sort by price
+POST http://localhost:9200/products/_search?sort=price:asc
+
+### search ll product sort by name (error, text tidak bisa disorting)
+POST http://localhost:9200/products/_search?sort=name:asc
