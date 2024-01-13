@@ -1,0 +1,49 @@
+# Snapshot
+# ● Snapshot adalah backup untuk Elasticsearch Cluster
+# ● Seluruh data akan di backup di snapshot
+# ● Kita bisa membuat snapshot untuk melakukan backup secara regular, jaga-jaga jika terjadi
+# Hardware Failure, atau tidak sengaja menghapus Index
+
+# Snapshot Repository
+# ● Sebelum kita membuat snapshot, kita harus terlebih dahulu membuat Repository
+# ● Repository yaitu lokasi kita menyimpan snapshot
+# ● Elasticsearch mendukung banyak sekali lokasi Repository, seperti AWS S3, GCP Storage, Azure
+# Storage dan lain-lain, namun pada materi ini kita akan bahas yang paling mudah, yaitu
+# menggunakan File Storage, sehingga bisa kita lakukan di komputer kita
+# ● Untuk membuat lokasi Repository, kita perlu mengubah konfigurasi elasticsearch.yml, setelah kita
+# kita harus melakukan restart Elasticsearch
+# fs artinya file storage
+# location: tempat folder repository akan disimpan
+
+## membuat snapshot repository
+PUT http://localhost:9200/_snapshot/first_backup
+Content-Type: application/json
+
+{
+  "type": "fs",
+  "settings": {
+    "location": "first_backup"
+  }
+}
+
+### get snapshot repository
+GET http://localhost:9200/_snapshot
+
+
+### create snapshot
+PUT http://localhost:9200/_snapshot/first_backup/snapshot1
+Content-Type: application/json
+
+{
+  "indices": [],
+  "metadata": {
+    "taken_by": "Gian Nurwana",
+    "taken_becouse": "backup before upgrading"
+  }
+}
+
+### get snapshoot
+GET http://localhost:9200/_snapshot/first_backup/snapshot1
+
+###
+GET http://localhost:9200/_cat/snapshots?v
