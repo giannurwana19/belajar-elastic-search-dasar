@@ -1,0 +1,39 @@
+# Array Field
+# ● Seperti yang dijelaskan di awal, bahwa Lucene Document menggunakan key-value, dan untuk value
+# di Lucene Document, dia bisa menyimpan lebih dari satu nilai
+# ● Jadi jika kita memiliki atribut Array, maka kita cukup membuat atribut dengan tipe data yang sesuai
+# dengan isi Array nya
+
+## update customers v2 mapping
+POST http://localhost:9200/customers_v2/_mapping
+Content-Type: application/json
+
+{
+  "properties": {
+    "hobbies": {
+      "type": "text"
+    },
+    "banks": {
+      "properties":{
+        "name": {
+          "type": "text"
+        },
+        "account_number": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
+
+### GET customers mapping
+GET http://localhost:9200/customers_v2/_mapping
+
+### bulk customers v2
+POST http://localhost:9200/_bulk
+Content-Type: application/json
+
+< customers-with-bank-and-hobbies.json
+
+### 
+GET http://localhost:9200/customer/_search
