@@ -50,6 +50,17 @@ Content-Type: application/json
   ]
 }
 
+# Standard Analyzer
+# ● Tipe data Text, secara default akan menggunakan StandardAnalyser, sederhananya, ini adalah
+# object yang digunakan untuk mengubah value asli, menjadi value yang bisa dicari dalam bentuk
+# token-token yang lebih kecil
+# ● https://lucene.apache.org/core/9_7_0/core/org/apache/lucene/analysis/standard/StandardAnalyz
+# er.html
+# ● Contoh, saat kita menggunakan value text eko@example.com, maka StandardAnalyzer akan
+# mengubah menjadi eko example com, hal ini secara otomatis kita bisa mencari menggunakan kata
+# eko, example atau com
+# ● Untuk lebih detail, nanti akan dibahas di materi Text Analysis
+
 # untuk tipe data text, elastic akan otmatis membuat lowercase, dan memecah nya dengan spasi menjadi beberapa bagian
 # banks.name = "BCA" => banks.name = ["bca"]
 # banks.name = "BCA Digital" => banks.name = ["bca", "digital"]

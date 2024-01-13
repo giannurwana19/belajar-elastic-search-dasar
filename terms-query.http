@@ -1,0 +1,31 @@
+### search customer where banks.name in ("username1","username2","username3")
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "terms": {
+      "username": [
+        "username1",
+        "username2",
+        "username3"
+      ]
+    }
+  }
+}
+
+### search customer where banks.name in ("BCA","BTN","BNI")
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "terms": {
+      "banks.name": [
+        "bca",
+        "btn",
+        "bni"
+      ]
+    }
+  }
+}
