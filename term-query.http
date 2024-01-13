@@ -1,0 +1,70 @@
+# Term Query
+# ● Term Query adalah jenis query untuk mencari exact value, misal username, product id, harga, dan
+# lain-lain
+# ● Term Query tidak begitu cocok jika digunakan untuk mencari di atribut dengan tipe data text, hal
+# ini dikarenakan tipe data text memiliki text analisis yang bisa menyebabkan datanya jadi tidak
+# sesuai dari yang awal, misal menjadikan lowercase otomatis, menghapus simbol otomatis, dan
+# lain-lain
+# ● Sehingga tidak cocok jika menggunakan Term Query untuk tipe data text, lebih cocok
+# menggunakan Match Query
+
+### search customers using match all
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "match_all": {}
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+### search customer where gender = 'Female'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "term": {
+      "gender": "Female"
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+### search customer where banks.name = 'BCA'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "term": {
+      "banks.name": "BCA"
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
