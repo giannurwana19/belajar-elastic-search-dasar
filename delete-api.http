@@ -9,3 +9,6 @@ Content-Type: application/json
 
 ### DELETE customer spammer
 DELETE http://localhost:9200/customers/_doc/spammer
+
+###
+DELETE http://localhost:9200/orders/_doc/1

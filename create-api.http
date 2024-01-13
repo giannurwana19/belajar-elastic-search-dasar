@@ -51,8 +51,9 @@ POST http://localhost:9200/orders/_create/1
 Content-Type: application/json
 
 {
-  "order_date": "2023-01-01 00:00:00",
+  "order_date": "2024-01-01 00:00:00",
   "customer_id": "gian",
+  "total": "4500",
   "items": [
     {
       "product_id": "1",
