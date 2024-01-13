@@ -7,6 +7,7 @@
 # lain-lain
 # ● Sehingga tidak cocok jika menggunakan Term Query untuk tipe data text, lebih cocok
 # menggunakan Match Query
+# term akan langsung mencari ke lucene document
 
 ### search customers using match all
 POST http://localhost:9200/customer/_search

@@ -1,0 +1,110 @@
+# Match Query
+# ● Match Query sebenarnya sama dengan Term Query, yang membedakan adalah, Match Query akan
+# menggunakan Text Analysis yang sama dengan atribut yang dicari
+# ● Maka dari itu, menggunakan tipe data Text, cocok menggunakan Match Query, karena secara
+# otomatis akan menggunakan Text Analysis yang sama
+# ● Materi Text Analysis akan kita bahas di materi terpisah, karena materi ini lumayan kompleks
+# ● Karena Match Query akan menggunakan Text Analysis, oleh karena itu, cocok digunakan untuk
+# data Text, tapi tetap Match Query juga bisa digunakan untuk semua tipe data
+
+
+### search customer where banks.name = 'BCA'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "match": {
+      "banks.name": "BCA"
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+### search customer where banks.name = 'BCA'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "term": {
+      "banks.name": "BCA"
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+# untuk tipe data text, elastic akan otmatis membuat lowercase, dan memecah nya dengan spasi menjadi beberapa bagian
+# banks.name = "BCA" => banks.name = ["bca"]
+# banks.name = "BCA Digital" => banks.name = ["bca", "digital"]
+# email = "GIAN@gmail.com" => email = ["gian", "example", "com"]
+
+# Match Query Operator
+# ● Saat kita menggunakan Match Query, terdapat atribut bernama operator, yang bernilai OR atau
+# AND, defaultnya adalah OR
+# ● Maka dari itu ketika kita mencari “bca digital”, maka StandardAnalyzer akan memecah menjadi
+# “bca” OR “digital”, maka dari itu semua bank BCA atau bank BCA Digital akan keluar dari hasil
+# pencarian
+# ● Jika kita ingin menggunakan “bca” AND “digital”, maka kita harus mengubah query operator nya
+# menjadi AND
+
+### search customer where banks.name = 'BCA DIGITAL'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "match": {
+      "banks.name": "BCA DIGITAL"
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+### search customer where banks.name = 'BCA DIGITAL'
+POST http://localhost:9200/customer/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "match": {
+      "banks.name": {
+        "query": "BCA DIGITAL",
+        "operator": "AND"
+      }
+    }
+  },
+  "from": 0,
+  "size": 5,
+  "sort": [
+    {
+      "username": {
+        "order": "desc"
+      }
+    }
+  ]
+}
