@@ -1,3 +1,10 @@
+# Terms Query
+# ● Elasticsearch memiliki query seperti IN di SQL, yaitu menggunakan Terms Query
+# ● Namun jangan lupa, Terms Query mirip seperti Term Query, jadi tidak akan menggunakan Text
+# Analysis bawaan dari atribut nya
+# ● Jadi sama seperti Term Query, Terms Query juga cocok digunakan untuk atribut yang bukan tipe
+# data Text
+
 ### search customer where banks.name in ("username1","username2","username3")
 POST http://localhost:9200/customer/_search
 Content-Type: application/json
